@@ -522,12 +522,6 @@ void addFuelToColisors(int x, int y, int colisorCounter) {
     else {
         colisors[colisorCounter][Y] = y - SPEED;
         colisors[colisorCounter][HEIGHT] = y + 60 - SPEED;
-
-        generateColisorTest(
-            colisors[colisorCounter][X],
-            colisors[colisorCounter][Y],
-            colisors[colisorCounter][WIDTH],
-            colisors[colisorCounter][HEIGHT]);
     }
 }
 int timerFuel = 0;
@@ -811,7 +805,7 @@ void ship(int colisorCounter) {
     glPopMatrix();
 
 }
-void addShipToColisors(int x, int y  , int colisorCounter) {
+void addShipToColisors(int x, int y, int colisorCounter) {
     if (colisors[colisorCounter][X] >= -150 && !shipShouldGoRight) {
         shipHorizontalSpeed = -3;
         shipShouldGoRight = colisors[colisorCounter][X] <= -145;
@@ -1308,7 +1302,7 @@ void nomes() {
     }
     glPopMatrix();
 
-   
+
 }
 
 void greenRectangle(int x, int y, int width, int height) {
@@ -1332,22 +1326,22 @@ void generateGreenRectangles() {
     greenRectangle(-200, -200, -150, 2200);
     greenRectangle(-150, -200, -100, 0);
     greenRectangle(-100, -200, -50, -50);
-    
 
-      //direita
+
+    //direita
     greenRectangle(150, -200, 200, 2200);
     greenRectangle(100, -200, 150, 0);
     greenRectangle(50, -200, 100, -50);
 
 
-   
+
     //meio 1
     greenRectangle(-150, 200, -100, 600);//esquerda
     greenRectangle(100, 200, 150, 600);//direita
-    
+
     //meio2
     greenRectangle(-25, 700, 25, 950);
-        
+
 
     /*//fim
       //esquerda
@@ -1401,24 +1395,16 @@ void display() {
     if (rotatePropeller == 8) {
         rotatePropeller = 0;
     }
-    SPEED++;
+    //SPEED++;
 
-    
-    //generateHouse(-150, -100);
-    generateFuel(60, 60);
-    //generateTree(-100, -60);
-    generateShip(100, 100);
-    //generateHelicopter(0, 0);
-    
 
-    glColor3ub(255, 255, 0);
+    generateHouse(100, -80);
+    generateFuel(60, 180);
+    generateTree(-100, -60);
+    generateShip(50, 60);
+    generateHelicopter(-50, 125);
 
-    glBegin(GL_QUADS);
-    glVertex2f(0, 0);
-    glVertex2f(0, -4);
-    glVertex2f(-4, -4);
-    glVertex2f(-4, 0);
-    glEnd();
+
 
     /* glBegin(GL_QUADS);
      glVertex2f(AIRPLANE_POSITION[X], AIRPLANE_POSITION[Y]);
@@ -1427,7 +1413,7 @@ void display() {
      glVertex2f(AIRPLANE_POSITION[WIDTH], AIRPLANE_POSITION[Y]);
      glEnd();*/
 
-
+    generateBullet(-6, -180);
     generateAirplane(-50, -100);
 
     score();
@@ -1449,10 +1435,5 @@ void display() {
 
     glFlush(); // executa o desenho 
 }
-
-
-
-
-
 
 
